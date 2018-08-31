@@ -1,12 +1,12 @@
-DROP DATABASE IF EXISTS test_db;
-CREATE DATABASE test_db;
+DROP DATABASE IF EXISTS events_db;
+CREATE DATABASE events_db;
 
-CREATE TABLE IF NOT EXISTS test_db.events
+CREATE TABLE IF NOT EXISTS events_db.events
 (
-  event_ID INTEGER NOT NULL auto_increment, 
-  event_Name VARCHAR(50),   
-  event_Location VARCHAR(50),  
-  event_Date DATETIME,
-  PRIMARY KEY(event_ID)
+  event_id INTEGER NOT NULL auto_increment, 
+  event_name VARCHAR(50),   
+  event_location VARCHAR(50),  
+  event_date DATETIME,
+  PRIMARY KEY(event_id)
 );
 
