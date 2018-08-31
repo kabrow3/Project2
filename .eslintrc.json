@@ -10,34 +10,34 @@
       ],
     "rules": {
         "no-duplicate-case":"error",
-        "no-empty":"error",
+        "no-empty":"off",
         "no-extra-semi":"error",
         "no-func-assign": "error",
         "no-irregular-whitespace":"error",
         "no-unreachable": "error",
-        "curly": "error",
-        "dot-notation": "error",
+        "curly": "off",
+        "dot-notation": "off",
         "eqeqeq": "error",
         "no-empty-function": "error",
-        "no-multi-spaces": "error",
-        "no-unused-vars": "error",
+        "no-multi-spaces": "off",
+        "no-unused-vars": "off",
         "camelcase": "error",
         "indent": [
-            "error",
+            "off",
             2
         ],
         "linebreak-style": [
-            "error",
+            "off",
             "unix"
         ],
         "quotes": [
-            "error",
+            "off",
             "double"
         ],
         "semi": [
             "error",
             "always"
         ],
-        "prettier/prettier": "error"
+        "prettier/prettier": "off"
     }
 }
