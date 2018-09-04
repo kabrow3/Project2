@@ -39,17 +39,14 @@ Object.keys(db).forEach(function(modelName) {
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
-db.user = require('../models/user.js')(sequelize, Sequelize);
-db.event = require('../models/event.js')(sequelize, Sequelize);
-
-db.event.hasMany(db.user, {as: 'Drivers'});
-db.event.belongsToMany(db.user, {through: 'EventDrivers', foreignKey: 'eventId', otherKey: 'userId'});
-db.user.hasMany(db.event, {as: 'Drivers'});
-db.user.belognsToMany(db.event, {through: 'EventDrivers', foreignKey: 'userId', otherKey: 'eventId'});
-db.event.hasMany(db.user, {as: 'Riders'});
-db.event.belongsToMany(db.user, {through: 'EventRiders', foreignKey: 'eventId', otherKey: 'userId'});
-db.user.hasMany(db.event, {as: 'Riders'});
-db.user.belognsToMany(db.event, {through: 'EventRiders', foreignKey: 'userId', otherKey: 'eventId'});
+db.Event.hasMany(db.User, {as: 'Drivers'});
+db.User.belongsToMany(db.Event, {through: 'EventDrivers', foreignKey: 'eventId', otherKey: 'userId'});
+// db.User.hasMany(db.Event, {as: 'Drivers'});
+// db.User.belongsToMany(db.Event, {through: 'EventDrivers', foreignKey: 'userId', otherKey: 'eventId'});
+db.Event.hasMany(db.User, {as: 'Riders'});
+// db.Event.belongsToMany(db.User, {through: 'EventRiders', foreignKey: 'eventId', otherKey: 'userId'});
+// db.User.hasMany(db.Event, {as: 'Riders'});
+db.User.belongsToMany(db.Event, {through: 'EventRiders', foreignKey: 'eventId', otherKey: 'userId'});
 
 
 module.exports = db;
