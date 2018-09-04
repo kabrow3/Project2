@@ -1,3 +1,4 @@
+
 $("#signup").on("submit", function (e) {
   e.preventDefault();
 
@@ -13,6 +14,7 @@ $("#signup").on("submit", function (e) {
     email: email,
     location: location,
     car: car
+
   };
 
   $.post("/signup", newUser).then(console.log).catch(console.error);
@@ -30,4 +32,4 @@ $("#signin").on("submit", function(e) {
   };
 
   $.post('/signin', user).then(console.log).catch(console.error);
-})
+});
