@@ -14,5 +14,3 @@ CREATE TABLE Events
   PRIMARY KEY(Event_ID)
 );
 
-
-
