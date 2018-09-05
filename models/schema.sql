@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 DROP DATABASE IF EXISTS events_db;
 CREATE DATABASE events_db;
 
@@ -27,5 +28,21 @@ CREATE TABLE IF NOT EXISTS rideshare_db.ride
   departureTime VARCHAR(50) NULL,
   created TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (riderId) 
+=======
+-- DROP DATABASE IF EXISTS exampledb;
+-- CREATE DATABASE events_db
+
+create database events_db;
+/*use events_db;
+DROP TABLE EVENT;*/
+use events_db;
+CREATE TABLE Events
+(
+  Event_ID INTEGER NOT NULL auto_increment, 
+  Event_Name VARCHAR(50),  -- FK   
+  Event_Location VARCHAR(150),  -- FK
+  Event_Date DATETIME,
+  PRIMARY KEY(Event_ID)
+>>>>>>> feb5c1df9acc185cd6a1da6988ff27a7d80835cd
 );
 
