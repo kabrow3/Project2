@@ -30,4 +30,4 @@ $("#signin").on("submit", function(e) {
   };
 
   $.post('/signin', user).then(console.log).catch(console.error);
-})
+});
