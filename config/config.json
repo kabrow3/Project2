@@ -1,16 +1,16 @@
 {
   "development": {
-    "username": "root",
-    "password": "root",
-    "database": "group6db",
+    "username": "group6",
+    "password": "group6",
+    "database": "group6_testdb",
     "host": "localhost",
     "dialect": "mysql",
     "port": 3306
   },
   "test": {
-    "username": "root",
-    "password": "root",
-    "database": "group6db",
+    "username": "group6",
+    "password": "group6",
+    "database": "group6_testdb",
     "host": "localhost",
     "dialect": "mysql",
     "logging": false
