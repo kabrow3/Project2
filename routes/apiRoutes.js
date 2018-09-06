@@ -1,8 +1,5 @@
 var db = require("../models");
 
-<<<<<<< HEAD
-module.exports = function (app) {
-=======
 module.exports = function(app) {
   // Get all examples
   app.get("/api/users", function(req, res) {
@@ -25,7 +22,6 @@ module.exports = function(app) {
     });
   });
 
->>>>>>> master
   // Get all events
   app.get("/api/events", function (req, res) {
     db.Event.findAll({}).then(function (dbEvents) {
