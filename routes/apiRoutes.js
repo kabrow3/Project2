@@ -1,6 +1,26 @@
 var db = require("../models");
 
-module.exports = function (app) {
+module.exports = function(app) {
+  // Get all users
+  app.get("/api/users", function(req, res) {
+    db.User.findAll({}).then(function(dbUser) {
+      res.json(dbUser);
+    });
+  });
+
+  // Create a new user
+  app.post("/api/users", function(req, res) {
+    db.User.create(req.body).then(function(dbUser) {
+      res.json(dbUser);
+    });
+  });
+
+  // Delete a user by id
+  app.delete("/api/users/:id", function(req, res) {
+    db.User.destroy({ where: { id: req.params.id } }).then(function(dbUser) {
+      res.json(dbUser);
+    });
+  });
 
   // Get all events
   app.get("/api/events", function (req, res) {
@@ -41,17 +61,18 @@ module.exports = function (app) {
     });
   });
 
-  app.get('/api/test', (req, res) => {
+  app.get('/api/test', function (req, res) {
     db.Event.findAll({
       include: [{
         model: db.User,
-        as: 'Drivers'
+        as: 'Riders'
       }]
     })
-    .then(data => res.json(data))
-    .catch(err => {
+    .then(function(data) {
+      res.json(data);
+    }).catch(function(err) {
       console.log(err);
-      res.status(500).json({ success: false, error: err })
+      res.status(500).json({ success: false, error: err });
     });
-  })
+  });
 };
