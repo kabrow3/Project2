@@ -1,27 +1,24 @@
-<link rel="stylesheet" href="../public/styles/styles.css">
-<iframe src="https://vimeo.com/115033918autplay==1&loop=1&muted=1#t=59s0&showinfo=0&autohide=1" frameborder="0" width="100%"
-    height="100%"></iframe>
-<div class="iframe"></div>
-{{!-- <div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="row">
+    <div class="col-md-12">
+        <div class="video-background">
+            <div class="video-foreground">
+                <iframe src="https://player.vimeo.com/video/126726117?autoplay=1&loop=1&muted=1#t=30s" frameborder="0" webkitallowfullscreen
+                    mozallowfullscreen allowfullscreen allow="autoplay"></iframe>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <div class="modal-header text-center">
-                <h4 class="modal-title w-100 font-weight-bold">Sign in</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
             <div class="modal-body mx-3">
+                <div class="illustration"><ion-icon class="icon ion-ios-locked-outline" name="lock"></ion-icon></div>
                 <form id='signin'>
-                    <div class="md-form mb-5">
-                        <i class="fa fa-envelope prefix grey-text"></i>
-                        <input type="username" id="signinUserValidation" class="form-control validate">
-                        <label data-error="wrong" data-success="right" for="defaultForm-email">Your email</label>
+                    <div class="md-form mb-5"><i class="fa fa-envelope prefix grey-text"></i>
+                        <input type="username" id="signinUserValidation" placeholder="Username or Email" class="form-control validate">
                     </div>
-                    <div class="md-form mb-4">
-                        <i class="fa fa-lock prefix grey-text"></i>
-                        <input type="password" id="signinPwValidation" class="form-control validate">
-                        <label data-error="wrong" data-success="right" for="defaultForm-pass">Your password</label>
+                    <div class="md-form mb-4"><i class="fa fa-lock prefix grey-text"></i>
+                        <input type="password" id="signinPwValidation" placeholder="Password" class="form-control validate">
                     </div>
                 </form>
             </div>
@@ -30,17 +27,12 @@
             </div>
         </div>
     </div>
-</div> --}}
+</div>
 <div class="modal fade" id="modalSignupForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <div class="modal-header text-center">
-                <h4 class="modal-title w-100 font-weight-bold">Sign Up</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
             <div class="modal-body mx-3">
+            <div class="illustration"><ion-icon class="icon ion-ios-locked-outline" name="create"></ion-icon></div>
                 <form id='signup'>
                     <div class="md-form mb-5">
                         <i class="fa fa-envelope prefix grey-text"></i>
@@ -75,19 +67,72 @@
         </div>
     </div>
 </div>
-
-<div class="text-center">
-    <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalLoginForm">Launch Modal Login
-        Form</a>
+<div class="container col-md-12">
+    <div class="row">
+        <nav class="col-md-12 navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" id="logo" href="/">HitchHiker</a>
+            <div class="col-md-3"></div>
+            <button class="col-md-2 button-inline btn btn-outline-dark my-2 my-sm-0"data-toggle="modal" data-target="#modalSignupForm" type="submit">Signup</button>
+            <div class="col-md-1"></div>
+            <button class="col-md-2 button-inline btn btn-outline-success my-2 my-sm-0"data-toggle="modal" data-target="#modalLoginForm" type="submit">Login</button>
+            
+        </nav>
+    </div>
 </div>
-<div class="text-center">
-    <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalSignupForm">Launch Modal Signup
-        Form</a>
+<div class="container">
+    <footer id="myFooter" class="fixed-bottom">
+        <div class="row">
+            <div class="col-sm-3 myCols">
+                <h5>Get started</h5>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Sign up</a></li>
+                    <li><a href="#">Downloads</a></li>
+                </ul>
+            </div>
+            <div class="col-sm-3 myCols">
+                <h5>About us</h5>
+                <ul>
+                    <li><a href="#">Company Information</a></li>
+                    <li><a href="#">Contact us</a></li>
+                    <li><a href="#">Reviews</a></li>
+                </ul>
+            </div>
+            <div class="col-sm-3 myCols">
+                <h5>Support</h5>
+                <ul>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Help desk</a></li>
+                    <li><a href="#">Forums</a></li>
+                </ul>
+            </div>
+            <div class="col-sm-3 myCols">
+                <h5>Legal</h5>
+                <ul>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Terms of Use</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="social-networks">
+            <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
+            <a href="#" class="facebook"><i class="fa fa-facebook-official"></i></a>
+            <a href="#" class="google"><i class="fa fa-google-plus"></i></a>
+        </div>
+    </footer>
 </div>
 
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-    crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-    crossorigin="anonymous"></script>
-<script src="/public/js/index.js"></script>
+
+    {{!-- <div class="jumbotron col-md-8">
+        <div class="jumbo-container">
+            <h1 class="display-4">Hello, world!</h1>
+            <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+    </div> --}}
+
+
+    {{!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> --}}
+
+
+
