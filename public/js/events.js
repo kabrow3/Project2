@@ -1,13 +1,12 @@
 $(document).ready(function() {
   // eventContainer holds all of our posts
-  var eventContainer = $(".events-today");
+  var eventContainer = $(".event-container");
   // var eventCategorySelect = $("#category");
   // Click events for the edit and delete buttons
-  $(document).on("click", "button.Drive", handleEventDriver);
-  $(document).on("click", "button.Ride", handleEventRider);
+  $(document).on("click", "button.driver", handleEventDriver);
+  $(document).on("click", "button.rider", handleEventRider);
   // Variable to hold our events
   var events;
-  getEvents();
   // This function grabs events from the database and updates the view
   function getEvents() {
     $.get("/api/events", function(data) {
@@ -16,6 +15,7 @@ $(document).ready(function() {
       initializeRows();
     });
   }
+  getEvents();
   // InitializeRows handles appending all of our constructed post HTML inside eventContainer
   function initializeRows() {
     eventContainer.empty();
@@ -45,10 +45,10 @@ $(document).ready(function() {
     var newEventBody = $("<p>");
     newEventTitle.text(event.eventName + " ");
     newEventLocation.text(event.eventLocation);
-    newEventDate.text(formattedDate);
-    newEventTitle.append(newEventDate);
+    newEventDate.text(event.eventDate);
     newEventCardHeading.append(driverBtn);
     newEventCardHeading.append(riderBtn);
+    newEventCardHeading.append(newEventTitle);
     newEventCardBody.append(newEventBody);
     newEventCard.append(newEventCardHeading);
     newEventCard.append(newEventCardBody);
