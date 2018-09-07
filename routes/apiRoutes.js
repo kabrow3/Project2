@@ -1,31 +1,27 @@
 var db = require("../models");
 
-<<<<<<< HEAD
-module.exports = function (app) {
-=======
 module.exports = function(app) {
-  // Get all examples
+  // Get all users
   app.get("/api/users", function(req, res) {
     db.User.findAll({}).then(function(dbUser) {
       res.json(dbUser);
     });
   });
 
-  // Create a new example
+  // Create a new user
   app.post("/api/users", function(req, res) {
     db.User.create(req.body).then(function(dbUser) {
       res.json(dbUser);
     });
   });
 
-  // Delete an example by id
+  // Delete a user by id
   app.delete("/api/users/:id", function(req, res) {
     db.User.destroy({ where: { id: req.params.id } }).then(function(dbUser) {
       res.json(dbUser);
     });
   });
 
->>>>>>> master
   // Get all events
   app.get("/api/events", function (req, res) {
     db.Event.findAll({}).then(function (dbEvents) {
@@ -48,34 +44,37 @@ module.exports = function(app) {
   });
 
   // Add a Driver for an event
-  app.post("/api/events/:event/drivers/:user", function (req, res) {
+  app.post("/api/events/driver", function (req, res) {
     db.EventDrivers.create({
-      // req.body
+      eventID: req.body.eventID,
+      userID: req.body.userID
     }).then(function (dbDrivers) {
       res.json(dbDrivers);
     });
   });
 
   // Add a Rider for an event
-  app.post("/api/events/:event/riders/:user", function (req, res) {
+  app.post("/api/events/rider", function (req, res) {
     db.EventRiders.create({
-      // req.body
+      eventID: req.body.eventID,
+      userID: req.body.userID
     }).then(function (dbRiders) {
       res.json(dbRiders);
     });
   });
 
-  app.get('/api/test', (req, res) => {
+  app.get('/api/test', function (req, res) {
     db.Event.findAll({
       include: [{
         model: db.User,
-        as: 'Drivers'
+        as: 'Riders'
       }]
     })
-    .then(data => res.json(data))
-    .catch(err => {
+    .then(function(data) {
+      res.json(data);
+    }).catch(function(err) {
       console.log(err);
-      res.status(500).json({ success: false, error: err })
+      res.status(500).json({ success: false, error: err });
     });
-  })
+  });
 };

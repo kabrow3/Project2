@@ -31,7 +31,7 @@ app.set("view engine", "handlebars");
 var models = require("./models");
 
 // Routes
-// require("./routes/apiRoutes")(app);
+require("./routes/apiRoutes")(app);
 require("./routes/htmlRoutes")(app);
 var authRoute = require('./routes/auth.js')(app,passport);
 //load passport strategies
@@ -46,7 +46,7 @@ if (process.env.NODE_ENV === "test") {
 }
 
 // Starting the server, syncing our models ------------------------------------/
-models.sequelize.sync(syncOptions).then(function() {
+models.sequelize.sync({ force: false }).then(function() {
   app.listen(PORT, function() {
     console.log(
       "==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.",

@@ -1,5 +1,5 @@
-use events_db;
-insert into event (event_Name, event_location, event_date) values ('Art, Beats, and Lyrics', 'Mercedes-Benz Stadium', '2018-10-19'),
+use group6_testdb;
+insert into events (eventName, eventLocation, eventDate) values ('Art, Beats, and Lyrics', 'Mercedes-Benz Stadium', '2018-10-19'),
 ('AfroPunk', '787 Windsor St SW', '2018-10-13'),
 ('2018 One Musicfest', 'Central Park', '2018-09-08'),
 ('2018 One Musicfest', 'Central Park', '2018-09-09'),

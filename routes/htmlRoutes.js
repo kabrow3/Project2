@@ -20,6 +20,14 @@ module.exports = function(app) {
     });
   });
 
+  app.get("/events", function(req, res) {
+    db.Event.findAll({}).then(function(dbUser) {
+      res.render("events", {
+        users: dbUser
+      });
+    });
+  });
+
   // Render 404 page for any unmatched routes
   app.get("*", function(req, res) {
     res.render("404");
