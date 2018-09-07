@@ -23,58 +23,61 @@ module.exports = function(app) {
   });
 
   // Get all events
-  app.get("/api/events", function (req, res) {
-    db.Event.findAll({}).then(function (dbEvents) {
+  app.get("/api/events", function(req, res) {
+    db.Event.findAll({}).then(function(dbEvents) {
       res.json(dbEvents);
     });
   });
 
   //Add an Event
-  app.post("/api/events/:event", function (req, res) {
-    db.Event.create(req.body).then(function (dbEvents) {
+  app.post("/api/events/:event", function(req, res) {
+    db.Event.create(req.body).then(function(dbEvents) {
       res.json(dbEvents);
     });
   });
 
   // Delete an event by id
-  app.delete("/api/events/:id", function (req, res) {
-    db.Event.destroy({ where: { id: req.params.id } }).then(function (dbEvents) {
+  app.delete("/api/events/:id", function(req, res) {
+    db.Event.destroy({ where: { id: req.params.id } }).then(function(dbEvents) {
       res.json(dbEvents);
     });
   });
 
   // Add a Driver for an event
-  app.post("/api/events/driver", function (req, res) {
+  app.post("/api/events/driver", function(req, res) {
     db.EventDrivers.create({
       eventID: req.body.eventID,
       userID: req.body.userID
-    }).then(function (dbDrivers) {
+    }).then(function(dbDrivers) {
       res.json(dbDrivers);
     });
   });
 
   // Add a Rider for an event
-  app.post("/api/events/rider", function (req, res) {
+  app.post("/api/events/rider", function(req, res) {
     db.EventRiders.create({
       eventID: req.body.eventID,
       userID: req.body.userID
-    }).then(function (dbRiders) {
+    }).then(function(dbRiders) {
       res.json(dbRiders);
     });
   });
 
-  app.get('/api/test', function (req, res) {
+  app.get("/api/test", function(req, res) {
     db.Event.findAll({
-      include: [{
-        model: db.User,
-        as: 'Riders'
-      }]
+      include: [
+        {
+          model: db.User,
+          as: "Riders"
+        }
+      ]
     })
-    .then(function(data) {
-      res.json(data);
-    }).catch(function(err) {
-      console.log(err);
-      res.status(500).json({ success: false, error: err });
-    });
+      .then(function(data) {
+        res.json(data);
+      })
+      .catch(function(err) {
+        console.log(err);
+        res.status(500).json({ success: false, error: err });
+      });
   });
 };
