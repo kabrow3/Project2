@@ -1,7 +1,7 @@
 {
   "development": {
-    "username": "group6",
-    "password": "group6",
+    "username": "root",
+    "password": "root",
     "database": "group6_testdb",
     "host": "localhost",
     "dialect": "mysql",
