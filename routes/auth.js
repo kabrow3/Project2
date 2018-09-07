@@ -12,7 +12,7 @@ module.exports = (app, passport) => {
     app.post(
         '/signin',
         passport.authenticate('local-signin', {
-            successRedirect: '/',
+            successRedirect: '/events',
             failureRedirect: '/'
         })
     );
@@ -20,7 +20,7 @@ module.exports = (app, passport) => {
     app.post(
         '/signup',
         passport.authenticate('local-signup', {
-            successRedirect: '/',
+            successRedirect: '/events',
             failureRedirect: '/'
         })
     );
