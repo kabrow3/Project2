@@ -44,18 +44,20 @@ module.exports = function(app) {
   });
 
   // Add a Driver for an event
-  app.post("/api/events/:event/drivers/:user", function (req, res) {
+  app.post("/api/events/driver", function (req, res) {
     db.EventDrivers.create({
-      // req.body
+      eventID: req.body.eventID,
+      userID: req.body.userID
     }).then(function (dbDrivers) {
       res.json(dbDrivers);
     });
   });
 
   // Add a Rider for an event
-  app.post("/api/events/:event/riders/:user", function (req, res) {
+  app.post("/api/events/rider", function (req, res) {
     db.EventRiders.create({
-      // req.body
+      eventID: req.body.eventID,
+      userID: req.body.userID
     }).then(function (dbRiders) {
       res.json(dbRiders);
     });
