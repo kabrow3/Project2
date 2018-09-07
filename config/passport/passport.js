@@ -1,9 +1,7 @@
 const bCrypt = require('bcrypt-nodejs');
+const LocalStrategy = require('passport-local').Strategy;
 
-module.exports = function(passport, user) {
-    const User = user;
-    const LocalStrategy = require('passport-local').Strategy;
-
+module.exports = function(passport, User) {
     passport.use(
         'local-signin',
         new LocalStrategy(
@@ -13,7 +11,6 @@ module.exports = function(passport, user) {
                 passReqToCallback: true
             },
             (req, email, password, done) => {
-                const User = user;
                 const isValidPassword = (userPass, pass) => bCrypt.compareSync(pass, userPass);
 
                 User.findOne({
@@ -60,7 +57,6 @@ module.exports = function(passport, user) {
                     const userPassword = generateHash(password);
                     const data = {
                         ...req.body,
-                        email: email,
                         password: userPassword
                     };
 
@@ -74,7 +70,7 @@ module.exports = function(passport, user) {
         )
     );
 
-    passport.serializeUser((user, done) => done(null, user.id));
+    passport.serializeUser((user, done) => done(null, user.userId));
 
     passport.deserializeUser((id, done) =>
         User.findById(id).then((user) => (user ? done(null, user.get()) : done(user.errors, null)))

@@ -2,8 +2,8 @@
     <div class="col-md-12">
         <div class="video-background">
             <div class="video-foreground">
-                <iframe src="https://player.vimeo.com/video/126726117?autoplay=1&loop=1&muted=1#t=30s" frameborder="0" webkitallowfullscreen
-                    mozallowfullscreen allowfullscreen allow="autoplay"></iframe>
+                <iframe src="https://player.vimeo.com/video/126726117?autoplay=1&loop=1&muted=1#t=30s" frameborder="0"
+                    webkitallowfullscreen mozallowfullscreen allowfullscreen allow="autoplay"></iframe>
             </div>
         </div>
     </div>
@@ -12,18 +12,20 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-body mx-3">
-                <div class="illustration"><ion-icon class="icon ion-ios-locked-outline" name="lock"></ion-icon></div>
-                <form id='signin'>
+                <div class="illustration">
+                    <ion-icon class="icon ion-ios-locked-outline" name="lock"></ion-icon>
+                </div>
+                <form action="/signin" method="POST">
                     <div class="md-form mb-5"><i class="fa fa-envelope prefix grey-text"></i>
-                        <input type="username" id="signinUserValidation" placeholder="Username or Email" class="form-control validate">
+                        <input type="email" name="email" id="signinUserValidation" placeholder="Email" class="form-control validate">
                     </div>
                     <div class="md-form mb-4"><i class="fa fa-lock prefix grey-text"></i>
-                        <input type="password" id="signinPwValidation" placeholder="Password" class="form-control validate">
+                        <input type="password" name="password" id="signinPwValidation" placeholder="Password" class="form-control validate">
+                    </div>
+                    <div class="modal-footer d-flex justify-content-center">
+                        <button type="submit" class="btn btn-default">Login</button>
                     </div>
                 </form>
-            </div>
-            <div class="modal-footer d-flex justify-content-center">
-                <button class="btn btn-default">Login</button>
             </div>
         </div>
     </div>
@@ -32,31 +34,33 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-body mx-3">
-            <div class="illustration"><ion-icon class="icon ion-ios-locked-outline" name="create"></ion-icon></div>
-                <form id='signup'>
+                <div class="illustration">
+                    <ion-icon class="icon ion-ios-locked-outline" name="create"></ion-icon>
+                </div>
+                <form id='signup' action="/signup" method="POST">
                     <div class="md-form mb-5">
                         <i class="fa fa-envelope prefix grey-text"></i>
-                        <input type="username" id="signupUserValidation" class="form-control validate">
+                        <input type="text" name="userName" id="signupUserValidation" class="form-control validate">
                         <label data-error="wrong" data-success="right" for="defaultForm-username">Your Username</label>
                     </div>
                     <div class="md-form mb-4">
                         <i class="fa fa-lock prefix grey-text"></i>
-                        <input type="password" id="signupPwValidation" class="form-control validate">
+                        <input type="password" name="password" id="signupPwValidation" class="form-control validate">
                         <label data-error="wrong" data-success="right" for="defaultForm-pass">Your Password</label>
                     </div>
                     <div class="md-form mb-5">
                         <i class="fa fa-envelope prefix grey-text"></i>
-                        <input type="email" id="emailValidation" class="form-control validate">
+                        <input type="email" name="email" id="emailValidation" class="form-control validate">
                         <label data-error="wrong" data-success="right" for="defaultForm-email">Your Email</label>
                     </div>
                     <div class="md-form mb-5">
                         <i class="fa fa-envelope prefix grey-text"></i>
-                        <input type="location" id="locationValidation" class="form-control validate">
+                        <input type="text" name="userLocation" id="locationValidation" class="form-control validate">
                         <label data-error="wrong" data-success="right" for="defaultForm-location">Your Current City</label>
                     </div>
                     <div class="md-form mb-5">
                         <i class="fa fa-envelope prefix grey-text"></i>
-                        <input type="car" id="carValidation" class="form-control validate">
+                        <input type="text" name="car" id="carValidation" class="form-control validate">
                         <label data-error="wrong" data-success="right" for="defaultForm-car">Your Current Car</label>
                     </div>
                     <div class="modal-footer d-flex justify-content-center">
@@ -72,12 +76,21 @@
         <nav class="col-md-12 navbar navbar-expand-lg navbar-light bg-light">
             <a class="navbar-brand" id="logo" href="/">HitchHiker</a>
             <div class="col-md-3"></div>
-            <button class="col-md-2 button-inline btn btn-outline-dark my-2 my-sm-0"data-toggle="modal" data-target="#modalSignupForm" type="submit">Signup</button>
-            <div class="col-md-1"></div>
-            <button class="col-md-2 button-inline btn btn-outline-success my-2 my-sm-0"data-toggle="modal" data-target="#modalLoginForm" type="submit">Login</button>
-            
-        </nav>
+            {{#if user}}
+                Welcome, {{user.userName}}
+                <a href="/logout" class="col-md-2 button-inline btn btn-outline-danger my-2 my-sm-0 ml-5">
+                    Logout
+                </a>
+            {{else}}
+                <button class="col-md-2 button-inline btn btn-outline-dark my-2 my-sm-0" data-toggle="modal"
+                    data-target="#modalSignupForm" type="submit">Signup</button>
+                <div class="col-md-1"></div>
+                <button class="col-md-2 button-inline btn btn-outline-success my-2 my-sm-0" data-toggle="modal"
+                    data-target="#modalLoginForm" type="submit">Login</button>
+            {{/if}}
     </div>
+    </nav>
+</div>
 </div>
 <div class="container">
     <footer id="myFooter" class="fixed-bottom">
@@ -124,15 +137,12 @@
 </div>
 
 
-    {{!-- <div class="jumbotron col-md-8">
+{{!-- <div class="jumbotron col-md-8">
         <div class="jumbo-container">
             <h1 class="display-4">Hello, world!</h1>
             <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
     </div> --}}
 
 
-    {{!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+{{!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> --}}
-
-
-
