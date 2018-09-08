@@ -39,7 +39,7 @@ require('./routes/htmlRoutes')(app);
 //load passport strategies
 
 // Starting the server, syncing our models ------------------------------------/
-models.sequelize.sync({ force: process.env.NODE_ENV !== 'production' }).then(function() {
+models.sequelize.sync({ force: process.env.NODE_ENV === 'test'}).then(function() {
     app.listen(PORT, function() {
         console.log('==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.', PORT, PORT);
     });
