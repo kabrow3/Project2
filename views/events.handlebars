@@ -1,33 +1,170 @@
-<link rel="stylesheet" href="../public/styles/styles.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
-    crossorigin="anonymous">
 
-<head>
-    <title>Local Events</title>
-    <div class="jumbotron jumbotron-fluid">
-        <h1 class="display-4 text-center">Local Events in Your Area</h1>
+
+
+<div class="container col-md-12">
+    <div class="row">
+        <nav class="col-md-12 navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" id="logo" href="/">HitchHiker</a>
+            <div class="col-md-3"></div>
+    
+            {{#if user}}
+                Welcome, {{user.userName}}
+                <a href="/logout" class="col-md-2 button-inline btn btn-outline-danger my-2 my-sm-0 ml-5">
+                    Logout
+                </a>
+            {{else}}
+             {{user.userName}}
+                <a href="/logout" class="col-md-2 button-inline btn btn-outline-danger my-2 my-sm-0 ml-5">
+                    Logout
+                </a>
+            {{/if}}
+        </nav>
     </div>
+</div>
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#carouselExampleIndicators" data-slide-to="0"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+  </ol>
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner">
+    <div class="carousel-item">
+        <div class="video-background">
+            <div class="video-foreground">
+                <iframe src="https://player.vimeo.com/video/156168811?autoplay=1&autopause=0&loop=1&muted=1#t=30s&controls=0" frameborder="0"
+                    webkitallowfullscreen mozallowfullscreen allowfullscreen allow="autoplay"></iframe>
+            </div>
+        </div>
+      <div class="carousel-caption d-md-block">
+        <h5>HitchHiker</h5>
+      </div>
+    </div>
+    <div class="carousel-item">
+        <div class="video-background">
+            <div class="video-foreground">
+                <iframe src="https://player.vimeo.com/video/213061922?autoplay=1&autopause=0&loop=1&muted=1#t=30s&controls=0" frameborder="0"
+                    webkitallowfullscreen mozallowfullscreen allowfullscreen allow="autoplay"></iframe>
+            </div>
+        </div>
+      <div class="carousel-caption d-md-block">
+        <h5>Need a Ride</h5>
+      </div>
+    </div>
+    <div class="carousel-item">
+        <div class="video-background">
+            <div class="video-foreground">
+                <iframe src="https://player.vimeo.com/video/220396799?autoplay=1&&autopause=0loop=1&muted=1#t=30s&controls=0" frameborder="0"
+                    webkitallowfullscreen mozallowfullscreen allowfullscreen allow="autoplay"></iframe>
+            </div>
+        </div>
+      <div class="carousel-caption d-md-block">
+        <h5>Fancy Driving</h5>
+      </div>
+    </div>
+  </div>
+  <!-- Controls -->
+  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+<span class="sr-only">Previous</span>
+</a>
+  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+<span class="carousel-control-next-icon" aria-hidden="true"></span>
+<span class="sr-only">Next</span>
+</a>
+</div>
 
-    <div class="container">
 
-        <div class="row text-center">
-            <div class="events-today col-md-6">
-                <h2>Today's Events</h2>
+<div class="jumbotron">
+  <h1 id="logo" class="display-4 title">HitchHiker Events!</h1>
+<div class="row">
+  <div class="container cont" id="multiBtns" >
+      <button type="button" id="weekly" class="btn btn-primary animated infinite pulse" >
+          Events Weekly
+        </button>
+        &nbsp;
+        &nbsp;
+        &nbsp;    
+        <button type="button" id="daily" class="btn btn-primary animated infinite pulse" >
+          Events Daily
+        </button>
+        &nbsp;
+        &nbsp;
+        &nbsp;
+        <button type="button" id="monthly" class="btn btn-primary animated infinite pulse" >
+          Events Monthly
+        </button>
+      </div>
+  </div>
+
+<div class="container" style="object-fit: contain">
+    <div class="card-deck">
+      <div class="card animated fadeIn" id="cardDaily" style="display: none">
+        <div class="card-body">
+          <h5 class="card-title">Today</h5>
+        </div>
+      </div>
+            
+    <div class="card animated fadeIn" id="cardWeekly" style="display: none">
+      <div class="card-body">
+        <h5 class="card-title">This Week</h5>
+          </div>
+      </div>
+          
+         
+      <div class="card animated fadeIn" id="cardMonthly" style="display: none">
+          <div class="card-body">
+            <h5 class="card-title">This Month</h5>
+          </div>
+      </div>
+</div>
+        
+</div>
+    
+
+<div class="container">
+    <footer id="myFooter" class="fixed-bottom">
+        <div class="row">
+            <div class="col-sm-3 myCols">
+                <h5>Get started</h5>
                 <ul>
-                    {{{body}}}
-
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Sign up</a></li>
+                    <li><a href="#">Downloads</a></li>
                 </ul>
             </div>
-
-            <div class="events-coming col-md-6">
-                <h2>Upcoming Events</h2>
+            <div class="col-sm-3 myCols">
+                <h5>About us</h5>
+                <ul>
+                    <li><a href="#">Company Information</a></li>
+                    <li><a href="#">Contact us</a></li>
+                    <li><a href="#">Reviews</a></li>
+                </ul>
+            </div>
+            <div class="col-sm-3 myCols">
+                <h5>Support</h5>
+                <ul>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Help desk</a></li>
+                    <li><a href="#">Forums</a></li>
+                </ul>
+            </div>
+            <div class="col-sm-3 myCols">
+                <h5>Legal</h5>
+                <ul>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Terms of Use</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
             </div>
         </div>
-
-        <div>
-            
+        <div class="social-networks">
+            <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
+            <a href="#" class="facebook"><i class="fa fa-facebook-official"></i></a>
+            <a href="#" class="google"><i class="fa fa-google-plus"></i></a>
         </div>
-    </div>
+    </footer>
+</div>
 
 
-</head>
