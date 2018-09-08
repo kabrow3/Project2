@@ -29,19 +29,19 @@ module.exports = function(app) {
     });
   });
 
-  //Add an Event
-  app.post("/api/events/:event", function(req, res) {
-    db.Event.create(req.body).then(function(dbEvents) {
-      res.json(dbEvents);
-    });
-  });
+  // //Add an Event
+  // app.post("/api/events/:event", function(req, res) {
+  //   db.Event.create(req.body).then(function(dbEvents) {
+  //     res.json(dbEvents);
+  //   });
+  // });
 
-  // Delete an event by id
-  app.delete("/api/events/:id", function(req, res) {
-    db.Event.destroy({ where: { id: req.params.id } }).then(function(dbEvents) {
-      res.json(dbEvents);
-    });
-  });
+  // // Delete an event by id
+  // app.delete("/api/events/:id", function(req, res) {
+  //   db.Event.destroy({ where: { id: req.params.id } }).then(function(dbEvents) {
+  //     res.json(dbEvents);
+  //   });
+  // });
 
   // Add a Driver for an event
   app.post("/api/events/driver", function(req, res) {
@@ -60,6 +60,34 @@ module.exports = function(app) {
       userID: req.body.userID
     }).then(function(dbRiders) {
       res.json(dbRiders);
+    });
+  });
+
+  //Get a list of Drivers for an Event
+  app.get("/api/events/drivers", function(req, res) {
+    db.Event.findAll({
+      include: [
+        {
+          model: db.User,
+          as: "Drivers"
+        }
+      ]
+    }).then(function(data) {
+      res.json(data);
+    });
+  });
+
+  //Get a list of Riders for an Event
+  app.get("/api/events/riders", function(req, res) {
+    db.Event.findAll({
+      include: [
+        {
+          model: db.User,
+          as: "Riders"
+        }
+      ]
+    }).then(function(data) {
+      res.json(data);
     });
   });
 
